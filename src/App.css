@@ -83,10 +83,13 @@ img {
 .left-section, .right-section {
   flex: 1;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
   height: calc(100vh - var(--bannerHeight)); /* Adjust height to fill screen below banner */
   font-size: 20px;
+  padding: 70px 40px 0px;
+  line-height: 40px;
 }
 
 .left-section {
@@ -97,4 +100,18 @@ img {
 .right-section {
   background-color: #132901;
   color: #ffffff; /* Adding white text color for visibility */
+}
+
+.lyric-word {
+  transition: color 0.3s;
+  white-space: pre-wrap; /* preserves whitespace */
+}
+
+.lyric-word:not(.punctuation):hover {
+  color: red; /* Change color on hover for words only */
+}
+
+.punctuation {
+  cursor: default;
+  color: inherit; /* No color change on hover */
 }

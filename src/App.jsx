@@ -3,9 +3,20 @@ import './App.css';
 import CoverArt from './assets/LOVE.jpeg';
 import WordPopup from './WordPopup';
 
-const lyrics = "L is for the way you look at me, \nO is for the only one I see.";
-// Match words and punctuation but maintain them in order
-const wordsWithPunctuation = lyrics.match(/[\w'-]+|[.,!?;]/g);
+const lyrics = "L is for the way you look at me %NL O is for the only one I see %NL V is very, very extraordinary %NL E is even more than anyone that you adore can  %NL%NL Love is all that I can give to you %NL Love is more than just a game for two %NL Two in love can make it %NL Take my heart and please don't break it %NL Love was made for me and you";
+// Split lyrics into parts by '%NL', then map to words and inject <br /> elements for line breaks
+const wordsWithPunctuation = lyrics.split('%NL').flatMap((line, index, array) => {
+  const words = line.match(/[\w'-]+|[.,!?;]/g) || [];
+  const elements = words.map((word, idx) => ({
+    word,
+    isPunctuation: /[.,!?;]/.test(word),
+    addSpace: idx !== 0 // Add space before words that are not the first in a line
+  }));
+  if (index < array.length - 1) { // Add a <br /> element after each line except the last one
+    elements.push(<br key={`br-${index}`} />);
+  }
+  return elements;
+});
 
 function App() {
   const [selectedWord, setSelectedWord] = useState(null);
@@ -32,19 +43,21 @@ function App() {
       <div className="content">
         <div className="left-section">
           <p>
-            {wordsWithPunctuation.map((word, index) => {
-            const isPunctuation = /[.,!?;]/.test(word);
-            return (
-              <span key={index}
-                className={`lyric-word ${isPunctuation ? "punctuation" : ""}`}
-                onClick={() => !isPunctuation && setSelectedWord(word)}
-                onMouseEnter={() => !isPunctuation && (document.body.style.cursor = "pointer")}
-                onMouseLeave={() => !isPunctuation && (document.body.style.cursor = "default")}
-              >
-                {((isPunctuation || index==0) ? "" : " ") + word}
-              </span>
-            );
-          })}
+            {wordsWithPunctuation.map((element, index) => {
+              if (React.isValidElement(element)) { // Render <br /> as is
+                return element;
+              }
+              return (
+                <span key={index}
+                  className={`lyric-word ${element.isPunctuation ? "punctuation" : ""}`}
+                  onClick={() => !element.isPunctuation && setSelectedWord(element.word)}
+                  onMouseEnter={() => !element.isPunctuation && (document.body.style.cursor = "pointer")}
+                  onMouseLeave={() => !element.isPunctuation && (document.body.style.cursor = "default")}
+                >
+                  {((element.addSpace && !element.isPunctuation) ? " " : "") + element.word}
+                </span>
+              );
+            })}
           </p>
           {selectedWord && <WordPopup word={selectedWord} closePopup={closePopup} />}
         </div>

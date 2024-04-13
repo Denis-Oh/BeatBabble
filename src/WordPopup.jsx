@@ -8,7 +8,7 @@ const WordPopup = ({ word, closePopup }) => (
             <button onClick={closePopup}>Close</button>
         </div>
         <h4>
-            English-FrenchEnglish-FrenchEnglish-FrenchEnglish-French
+            French-English
         </h4>
     </div>
   );

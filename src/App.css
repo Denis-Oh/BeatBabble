@@ -27,11 +27,52 @@ body, html, #root {
   left: 0;
   z-index: 1000;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   font-size: 24px;
   box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+  padding: 20px 35px;
 }
+
+.navigation {
+  display: flex;
+  align-items: baseline;
+  justify-content: left;
+  width: 100%;
+}
+.navigation h2 {
+  margin: 0 60px 30px 0;
+}
+.navigation h4 {
+  margin: 0 40px 30px 0;
+}
+
+.song-title {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  width: 100%;
+}
+img {
+  width: 150px;
+  border-radius: 15px;
+  margin-right: 40px;
+  box-shadow: 3px 3px 1px #c1c1c1;
+}
+.song-title-info {
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+.song-title-info h2 {
+  margin-bottom: 10px;
+}
+.song-title-info h4 {
+  margin-top: 0;
+  color: #d92828;
+}
+
 
 .content {
   display: flex;

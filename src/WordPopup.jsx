@@ -47,6 +47,8 @@ const WordPopup = ({ word, closePopup }) => {
         }
     };
 
+    const filteredTranslations = translationData.translations.filter(trans => trans && trans.trim() !== '').join(', ');
+
     return (
         <div className="popup">
             <div className="popup-header">
@@ -55,10 +57,12 @@ const WordPopup = ({ word, closePopup }) => {
             </div>
             <div>
                 <h4>Translations:</h4>
-                <p>{translationData.translations.filter(trans => trans && trans.trim() !== '').join(', ')}</p>
+                <p>{filteredTranslations.length > 0 ? filteredTranslations : "No translation found"}</p>
                 <h4>Example:</h4>
-                {currentExample && (
+                {currentExample ? (
                     <p><span className="original-language">{currentExample.source}</span> - {currentExample.target}</p>
+                ) : (
+                    <p>No examples available.</p>
                 )}
                 {translationData.examples.length > 1 && (
                     <button onClick={handleRandomExample}>Randomize Example</button>

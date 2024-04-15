@@ -3,9 +3,10 @@ import './App.css';
 import CoverArt from './assets/LOVE.jpeg';
 import WordPopup from './WordPopup';
 
-const lyrics = "L is for the way you look at me %NL O is for the only one I see %NL V is very, very extraordinary %NL E is even more than anyone that you adore can  %NL%NL Love is all that I can give to you %NL Love is more than just a game for two %NL Two in love can make it %NL Take my heart and please don't break it %NL Love was made for me and you";
+const lyricsEnglish = "L is for the way you look at me %NL O is for the only one I see %NL V is very, very extraordinary %NL E is even more than anyone that you adore can  %NL%NL Love is all that I can give to you %NL Love is more than just a game for two %NL Two in love can make it %NL Take my heart and please don't break it %NL Love was made for me and you";
+const lyricsFrench = "L est pour la façon dont tu me regardes %NL O est pour la seule personne que je vois %NL V est pour vraiment, vraiment extraordinaire %NL E est encore plus que quiconque que tu puisses adorer %NL%NL L'amour est tout ce que je peux te donner %NL L'amour est plus qu'un simple jeu à deux %NL Deux en amour peuvent y arriver %NL Prends mon coeur et s'il te plaît ne le brise pas %NL L'amour est fait pour moi et toi";
 // Split lyrics into parts by '%NL', then map to words and inject <br /> elements for line breaks
-const wordsWithPunctuation = lyrics.split('%NL').flatMap((line, index, array) => {
+const wordsWithPunctuation = lyricsEnglish.split('%NL').flatMap((line, index, array) => {
   const words = line.match(/[\w'-]+|[.,!?;]/g) || [];
   const elements = words.map((word, idx) => ({
     word,

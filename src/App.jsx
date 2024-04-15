@@ -29,9 +29,9 @@ function App() {
       <header className="banner">
         <nav className="navigation">
           <h2>BeatBabble</h2>
-          <h4>My Songs</h4>
-          <h4>Discover</h4>
-          <h4>Languages</h4>
+          <h4>Mes chanson</h4>
+          <h4>Découvrir</h4>
+          <h4>Langues</h4>
         </nav>
         <div className="song-title">
           <img src={CoverArt} alt="CoverArt"></img>
@@ -62,7 +62,11 @@ function App() {
           </p>
           {selectedWord && <WordPopup word={selectedWord} closePopup={closePopup} />}
         </div>
-        <div className="right-section">Right Section</div>
+        <div className="right-section">
+          <p>
+          L est pour la façon dont tu me regardes <br /> O est pour la seule personne que je vois <br /> V est pour vraiment, vraiment extraordinaire <br /> E est encore plus que quiconque que tu puisses adorer <br /><br /> L'amour est tout ce que je peux te donner <br /> L'amour est plus qu'un simple jeu à deux <br /> Deux en amour peuvent y arriver <br /> Prends mon coeur et s'il te plaît ne le brise pas <br /> L'amour est fait pour moi et toi"
+          </p>
+        </div>
       </div>
     </div>
   );

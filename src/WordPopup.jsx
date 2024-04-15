@@ -53,19 +53,19 @@ const WordPopup = ({ word, closePopup }) => {
         <div className="popup">
             <div className="popup-header">
                 <h3>{word}</h3>
-                <button onClick={closePopup}>Close</button>
+                <button onClick={closePopup}>Fermer</button>
             </div>
             <div>
-                <h4>Translations:</h4>
+                <h4>Traductions:</h4>
                 <p>{filteredTranslations.length > 0 ? filteredTranslations : "No translation found"}</p>
-                <h4>Example:</h4>
+                <h4>Exemple:</h4>
                 {currentExample ? (
                     <p><span className="original-language">{currentExample.source}</span> - {currentExample.target}</p>
                 ) : (
-                    <p>No examples available.</p>
+                    <p>Aucun exemple disponible.</p>
                 )}
                 {translationData.examples.length > 1 && (
-                    <button onClick={handleRandomExample}>Randomize Example</button>
+                    <button onClick={handleRandomExample}>Exemple de randomisation</button>
                 )}
             </div>
         </div>

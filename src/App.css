@@ -1,42 +1,117 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+:root {
+  --bannerHeight: 250px;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* General resets for the app */
+body, html, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.banner {
+  background-color: #c0f630;
+  color: #132901;
+  width: 100%;
+  height: var(--bannerHeight);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 24px;
+  box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+  padding: 20px 35px;
 }
 
-.card {
-  padding: 2em;
+.navigation {
+  display: flex;
+  align-items: baseline;
+  justify-content: left;
+  width: 100%;
+}
+.navigation h2 {
+  margin: 0 60px 30px 0;
+}
+.navigation h4 {
+  margin: 0 40px 30px 0;
 }
 
-.read-the-docs {
-  color: #888;
+.song-title {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  width: 100%;
+}
+img {
+  width: 150px;
+  border-radius: 15px;
+  margin-right: 40px;
+  box-shadow: 3px 3px 1px #c1c1c1;
+}
+.song-title-info {
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+.song-title-info h2 {
+  margin-bottom: 10px;
+}
+.song-title-info h4 {
+  margin-top: 0;
+  color: #d92828;
+}
+
+
+.content {
+  display: flex;
+  flex: 1;
+  margin-top: var(--bannerHeight); /* Same height as the banner */
+}
+
+.left-section, .right-section {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  height: calc(100vh - var(--bannerHeight)); /* Adjust height to fill screen below banner */
+  font-size: 20px;
+  padding: 70px 40px 0px;
+  line-height: 40px;
+}
+
+.left-section {
+  background-color: #fbfdf2;
+  color: #132901;
+}
+
+.right-section {
+  background-color: #132901;
+  color: #ffffff; /* Adding white text color for visibility */
+}
+
+.lyric-word {
+  transition: color 0.3s;
+  white-space: pre-wrap; /* preserves whitespace */
+}
+
+.lyric-word:not(.punctuation):hover {
+  color: red; /* Change color on hover for words only */
+}
+
+.punctuation {
+  cursor: default;
+  color: inherit; /* No color change on hover */
 }

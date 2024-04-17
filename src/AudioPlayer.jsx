@@ -18,8 +18,7 @@ const AudioPlayer = React.forwardRef((props, ref) => {
                 <source src={SongClip} type="video/mp4" />
                 Your browser does not support the audio element.
             </audio>
-            <button onClick={playAudio}>Play</button>
-            <button onClick={restartAudio}>Redémarrage</button>
+            <button onClick={restartAudio}>Recommencer</button>
         </div>
     );
 });

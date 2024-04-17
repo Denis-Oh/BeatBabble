@@ -115,3 +115,8 @@ img {
   cursor: default;
   color: inherit; /* No color change on hover */
 }
+
+.highlighted-word {
+  font-weight: bold;
+  color: blue;
+}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import './App.css';
 import CoverArt from './assets/LOVE.jpeg';
 import WordPopup from './WordPopup';
@@ -23,6 +23,36 @@ const wordsWithPunctuation = lyricsEnglish.split('%NL').flatMap((line, index, ar
 
 function App() {
   const [selectedWord, setSelectedWord] = useState(null);
+  const [highlightedWordIndex, setHighlightedWordIndex] = useState(null);
+  const audioRef = useRef(null);
+
+  // Define the time intervals for word highlighting here
+  const timeIntervals = {
+    1: [{ start: 5, end: 10 }, { start: 50, end: 55 }],
+    // ... more intervals for other words
+  };
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      if (audioRef.current) {
+        const currentTime = audioRef.current.currentTime;
+        let foundInterval = false;
+        Object.entries(timeIntervals).forEach(([index, intervals]) => {
+          intervals.forEach(({ start, end }) => {
+            if (currentTime >= start && currentTime <= end) {
+              setHighlightedWordIndex(parseInt(index, 10));
+              foundInterval = true;
+            }
+          });
+        });
+        if (!foundInterval) {
+          setHighlightedWordIndex(null);
+        }
+      }
+    }, 500);
+
+    return () => clearInterval(intervalId);
+  }, []);
 
   const closePopup = () => setSelectedWord(null);
 
@@ -47,12 +77,14 @@ function App() {
         <div className="left-section">
           <p>
             {wordsWithPunctuation.map((element, index) => {
+              const isHighlighted = highlightedWordIndex === index; // Check if this index is highlighted
+              const className = `lyric-word ${element.isPunctuation ? 'punctuation' : ''} ${isHighlighted ? 'highlighted-word' : ''}`;
               if (React.isValidElement(element)) { // Render <br /> as is
                 return element;
               }
               return (
                 <span key={index}
-                  className={`lyric-word ${element.isPunctuation ? "punctuation" : ""}`}
+                  className={className} // Apply class based on highlight state
                   onClick={() => !element.isPunctuation && setSelectedWord(element.word)}
                   onMouseEnter={() => !element.isPunctuation && (document.body.style.cursor = "pointer")}
                   onMouseLeave={() => !element.isPunctuation && (document.body.style.cursor = "default")}
@@ -69,7 +101,7 @@ function App() {
           L est pour la façon dont tu me regardes <br /> O est pour la seule personne que je vois <br /> V est pour vraiment, vraiment extraordinaire <br /> E est encore plus que quiconque que tu puisses adorer <br /><br /> L'amour est tout ce que je peux te donner <br /> L'amour est plus qu'un simple jeu à deux <br /> Deux en amour peuvent y arriver <br /> Prends mon coeur et s'il te plaît ne le brise pas <br /> L'amour est fait pour moi et toi"
           </p>
         </div>
-        <AudioPlayer />
+        <AudioPlayer ref={audioRef} />
       </div>
     </div>
   );

@@ -2,6 +2,11 @@
 
 Learn language with music!
 
+## Functionalities
+- Click words to see their translation
+- Play the song directly in your browser
+- Synced lyrics during song playback
+
 ## Instructions
 - The main screen code is in src/App.jsx
 

@@ -109,9 +109,16 @@ img {
 
 .lyric-word:not(.punctuation):hover {
   color: red; /* Change color on hover for words only */
+  font-weight: bold;
 }
 
 .punctuation {
   cursor: default;
   color: inherit; /* No color change on hover */
+}
+
+.highlighted-word {
+  font-weight: bold;
+  color: blue;
+  transition: color 0.3s ease-in-out, font-weight 0.3s ease-in-out; 
 }

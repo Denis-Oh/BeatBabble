@@ -7,4 +7,16 @@
     background-color: rgba(0, 0, 0, 0.7); /* Optional: for visibility */
     padding: 10px;
     border-radius: 5px; /* Optional: for aesthetics */
+    display: flex; /* Using flexbox to align items */
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Center items horizontally */
+    width: auto; /* Adjust width as needed */
+}
+
+audio {
+    margin: 10px 20px;
+}
+
+button {
+    margin-right: 20px;
 }

@@ -27,11 +27,49 @@ function App() {
   const audioRef = useRef(null);
 
   // Define the time intervals for word highlighting here
-  const timeIntervals = {
-    1: [{ start: 5, end: 10 }, { start: 50, end: 55 }],
-    // ... more intervals for other words
-  };
+  // const timeIntervals = {
+  //   0: [{ start: 7, end: 7.6 }], // L
+  //   10: [{ start: 13, end: 13.6 }], // O
+  //   19: [{ start: 19, end: 20 }], // V
+  //   26: [{ start: 25, end: 26 }], // E
 
+  //   38: [{ start: 32, end: 40 }], // Love 1
+  //   48: [{ start: 38, end: 39 }], // Love 2
+  //   58: [{ start: 44, end: 45 }], // Two
+  //   65: [{ start: 47, end: 48 }], // Take
+  //   74: [{ start: 50, end: 51 }], // Love 3
+  // };
+
+  // Evenly spaced interval
+  function createTimeIntervals(startTime, endTime, startInterval, endInterval) {
+    const timeIntervals = {};
+    const range = endTime - startTime; // total duration
+    const numIntervals = endInterval - startInterval;
+    const intervalLength = range / numIntervals; // Interval length based on time and number of intervals
+  
+    for (let i = 0; i < numIntervals; i++) {
+      timeIntervals[startInterval + i] = [{
+        start: startTime + intervalLength * i,
+        end: startTime + intervalLength * (i + 1)
+      }];
+    }
+    return timeIntervals;
+  }
+  
+  const Line1 = createTimeIntervals(7, 13, 0, 10); // L
+  const Line2 = createTimeIntervals(13, 19, 10, 19); // O
+  const Line3 = createTimeIntervals(19, 25, 19, 26); // V
+  const Line4 = createTimeIntervals(25, 32, 26, 38); // E
+
+  const Line5 = createTimeIntervals(32, 38, 38, 48); // Love 1
+  const Line6 = createTimeIntervals(38, 44, 48, 58); // Love 2
+  const Line7 = createTimeIntervals(44, 47, 58, 65); // Two
+  const Line8 = createTimeIntervals(47, 50, 65, 74); // Take
+  const Line9 = createTimeIntervals(50, 55, 74, 81); // Love 3
+  
+  const timeIntervals = { ...Line1, ...Line2, ...Line3, ...Line4, ...Line5, ...Line6, ...Line7, ...Line8, ...Line9 };
+
+  
   useEffect(() => {
     const intervalId = setInterval(() => {
       if (audioRef.current) {

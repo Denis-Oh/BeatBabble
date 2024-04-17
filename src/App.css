@@ -80,7 +80,20 @@ img {
   margin-top: var(--bannerHeight); /* Same height as the banner */
 }
 
-.left-section, .right-section {
+.left-section{
+  flex: 1;
+  max-width: 550px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  height: calc(100vh - var(--bannerHeight)); /* Adjust height to fill screen below banner */
+  font-size: 20px;
+  padding: 70px 40px 0px;
+  line-height: 40px;
+}
+
+.right-section {
   flex: 1;
   display: flex;
   flex-wrap: wrap;

@@ -76,10 +76,11 @@ function App() {
   );
 }
 
+//Plays the sound and has the lyrics move
 function SoundPlayer() {
   const [playSound] = useSound(mySound)
   const [index, setIndex] = useState(0);
-  const lyrics = [<Test paused={true} />, <Test paused={false} />]
+  const lyrics = [<Lyrics paused={true} />, <Lyrics paused={false} />]
 
   function handleClick() {
     if (index == 0){
@@ -96,7 +97,8 @@ function SoundPlayer() {
   )
 }
 
-function Test(props) {
+//gets the lyrics to move
+function Lyrics(props) {
   return(
     <span style={{cursor: 'pointer'}}>
       {<Wave
@@ -114,4 +116,3 @@ function Test(props) {
 }
 
 export default App;
-

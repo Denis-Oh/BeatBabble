@@ -20,25 +20,25 @@ const WordPopup = ({ word, closePopup }) => {
     }, [translationData.examples]);
 
     const fetchTranslation = async (word) => {
-        if (word.toLowerCase() === 'the') { // manual translation
+        if (word.toLowerCase() === 'la') { // manual translation
             setTranslationData({
-                translations: ["La, Le, Les"],
+                translations: ["The"],
                 examples: [
                     {
-                        source: "The boy went for a walk.",
-                        target: "Le garçon est allé se promener."
+                        source: "Le garçon est allé se promener.",
+                        target: "The boy went for a walk."
                     }, {
-                        source: "Does the newspaper have a future place in society?",
-                        target: "Est-ce que les journaux ont une place dans la société à venir ?"
+                        source: "Est-ce que les journaux ont une place dans la société à venir ?",
+                        target: "Does the newspaper have a future place in society?"
                     }, {
-                        source: "The wild blueberry capital of the US is Maine.",
-                        target: "C'est dans le Maine qu'on peut trouver le plus de myrtilles."
+                        source: "C'est dans le Maine qu'on peut trouver le plus de myrtilles.",
+                        target: "The wild blueberry capital of the US is Maine."
                     }
                 ]
             });
-        } else if (word.toLowerCase() === 'i') { // manual translation
+        } else if (word.toLowerCase() === 'Je') { // manual translation
             setTranslationData({
-                translations: ["Je, Moi"],
+                translations: ["I"],
                 examples: [
                     {
                         source: "I love you.",
@@ -49,9 +49,9 @@ const WordPopup = ({ word, closePopup }) => {
                     }
                 ]
             });
-        } else if (word.toLowerCase() === 'to') { // manual translation
+        } else if (word.toLowerCase() === 'le') { // manual translation
             setTranslationData({
-                translations: ["à, le, au"],
+                translations: ["to"],
                 examples: [
                     {
                         source: "He went to the shop. He went out to dinner.",
@@ -62,16 +62,16 @@ const WordPopup = ({ word, closePopup }) => {
                     }
                 ]
             });
-        } else if (word.toLowerCase() === 'in') { // manual translation
+        } else if (word.toLowerCase() === 'amour') { // manual translation
             setTranslationData({
-                translations: ["Dans, Dedans"],
+                translations: ["love"],
                 examples: [
                     {
-                        source: "I left your book in the car.",
-                        target: "J'ai laissé ton livre dans la voiture."
+                        source: "I love the car you drive.",
+                        target: "J'adore la voiture que tu conduis."
                     }, {
-                        source: "He came in the room after you left.",
-                        target: "Il est entré dans la pièce après votre départ."
+                        source: "He fell in love with you.",
+                        target: "Il est tombé amoureux de toi."
                     }
                 ]
             });

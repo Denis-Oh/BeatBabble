@@ -2,6 +2,10 @@
 
 Learn language with music!
 
+### Demo Video:
+
+[![BeatBabble](BeatBabble_Screenshot.png)](https://youtu.be/7cqEKb5SUmM "BeatBabble Prototype Video")
+
 ## Functionalities
 - Click words to see their translation
 - Play the song directly in your browser
